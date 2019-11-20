@@ -99,10 +99,6 @@ if (NOT gaol_INCLUDE_DIR OR NOT gaol_LIBRARY OR NOT gdtoa_LIBRARY)
                                       --with-mathlib-include=${LIBULTIM_INCDIR}
                                       --with-mathlib-lib=${LIBULTIM_LIBDIR}
                                       ${GAOL_CONFIG_ARGS}
-                        LOG_DOWNLOAD 1
-                        LOG_CONFIGURE 1
-                        LOG_BUILD 1
-                        LOG_INSTALL 1
                       )
   ExternalProject_Get_Property (libgaol_3rd INSTALL_DIR)
   # install headers and set build and install include directory
