@@ -2,30 +2,6 @@ language: C
 
 matrix:
   include:
-    - os: linux
-      compiler: gcc
-      env:
-        - TEST_INTERVAL_LIB=gaol
-        - STATIC_OR_SHARED=
-        - PLUGINS="--with-optim --lp-lib=soplex"
-    - os: linux
-      compiler: gcc
-      env:
-        - TEST_INTERVAL_LIB=gaol
-        - STATIC_OR_SHARED=--enable-shared
-        - PLUGINS=
-    - os: linux
-      compiler: gcc
-      env:
-        - TEST_INTERVAL_LIB=filib
-        - STATIC_OR_SHARED=
-        - PLUGINS="--with-optim --lp-lib=soplex"
-    - os: linux
-      compiler: gcc
-      env:
-        - TEST_INTERVAL_LIB=filib
-        - STATIC_OR_SHARED=
-        - PLUGINS="--with-optim --lp-lib=clp"
     - os: osx
       compiler: clang
       osx_image: xcode8.3
@@ -34,15 +10,6 @@ matrix:
         - STATIC_OR_SHARED=
         - PLUGINS="--with-optim --lp-lib=soplex"
         - CXXFLAGS=-std=c++11
-    - os: osx
-      compiler: clang
-      osx_image: xcode8.3
-      env:
-        - TEST_INTERVAL_LIB=gaol
-        - STATIC_OR_SHARED=--enable-shared
-        - PLUGINS=
-        - CXXFLAGS=-std=c++11
-
 # only works on linux
 addons:
   apt:
@@ -65,7 +32,7 @@ install:
 # command to run tests
 # TODO: add nonreg tests
 script:
-  - ./waf utest
+  - ./__build__/tests/utest_Parser #./waf utest
   - mkdir build && cd build && cmake -DINTERVAL_LIB=${TEST_INTERVAL_LIB} .. && make && make check
 #  - __build__/examples/optimizer04 benchs/benchs-optim/coconutbenchmark-library1/ex8_5_2.bch acidhc4 compo smearsumrel 1.e-8 1.e-8 100 1
 

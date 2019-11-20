@@ -235,6 +235,7 @@ void TestParser::choco01() {
 	CPPUNIT_ASSERT(strcmp(sys.args[1].name,"{1}")==0);
 	CPPUNIT_ASSERT(sys.box.size()==2);
 	CPPUNIT_ASSERT(sys.f_ctrs.nb_arg()==2);
+	cerr << " CHOCO EXPR=" << sys.f_ctrs.expr() << endl;
 	CPPUNIT_ASSERT(sameExpr(sys.f_ctrs.expr(),"({1}+{0})"));
 	CPPUNIT_ASSERT(sys.ctrs.size()==1);
 	CPPUNIT_ASSERT(sameExpr(sys.ctrs[0].f.expr(),sys.f_ctrs.expr()));
